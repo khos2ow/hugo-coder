@@ -31,18 +31,20 @@
       <link rel="stylesheet" href="{{ $styles.Permalink }}" integrity="{{ $styles.Data.Integrity }}" media="screen">
     {{ end }}
 
-    {{ if .Site.Params.rtl}}
-      <link rel="stylesheet" href="{{ "css/style-rtl.min.css" | absURL }}{{ with $.Site.Params.version.css }}?v={{ . }}{{ end }}">
+    {{ if .Site.Params.rtl }}
+      {{ if .Site.IsServer }}
+        {{ $cssOpts := (dict "targetPath" "css/coder-rtl.css" "enableSourceMap" true ) }}
+        {{ $styles := resources.Get "scss/coder-rtl.scss" | resources.ExecuteAsTemplate "style.coder-rtl.css" . | toCSS $cssOpts }}
+        <link rel="stylesheet" href="{{ $styles.Permalink }}" media="screen">
+      {{ else }}
+        {{ $cssOpts := (dict "targetPath" "css/coder-rtl.css" ) }}
+        {{ $styles := resources.Get "scss/coder-rtl.scss" | resources.ExecuteAsTemplate "style.coder-rtl.css" . | toCSS $cssOpts | minify | fingerprint }}
+        <link rel="stylesheet" href="{{ $styles.Permalink }}" integrity="{{ $styles.Data.Integrity }}" media="screen">
+      {{ end }}
     {{ end }}
 
     {{ range .Site.Params.custom_css }}
-      <link rel="stylesheet" href="{{ . | absURL }}{{ with $.Site.Params.version.css }}?v={{ . }}{{ end }}">
-    {{ end }}
-
-    {{ if .Site.Params.rtl }}
-      {{ range .Site.Params.custom_rtl_css }}
-        <link rel="stylesheet" href="{{ . | absURL }}{{ with $.Site.Params.version.css }}?v={{ . }}{{ end }}">
-      {{ end }}
+      <link rel="stylesheet" href="{{ . | absURL }}">
     {{ end }}
 
     <link rel="icon" type="image/png" href="{{ "/images/favicon-32x32.png" | absURL }}" sizes="32x32">
