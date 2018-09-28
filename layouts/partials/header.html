@@ -1,6 +1,6 @@
 <nav class="navigation" id="navigation">
   <section class="container">
-    <a class="navigation-title" href="{{ .Site.BaseURL | absLangURL }}">
+    <a class="navigation-title" href="{{ print "/" | absLangURL }}">
       {{ .Site.Title }}
     </a>
     <input type="checkbox" id="menu-toggle" />
@@ -9,7 +9,7 @@
       {{ with .Site.Menus.main}}
         {{ range sort . }}
           <li class="navigation-item">
-            <a class="navigation-link" href="{{ .URL | absLangURL }}">{{ default .Name ( i18n .Name ) }}</a>
+            <a class="navigation-link" href="{{ .URL | relLangURL }}">{{ default .Name ( i18n .Name ) }}</a>
           </li>
         {{ end }}
       {{ end }}
