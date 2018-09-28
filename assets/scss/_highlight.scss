@@ -1,6 +1,7 @@
 /* Background */
 .chroma {
-  background-color: #f8f8f8;
+  background-color: $bg-color-code-pre;
+  border: 1px solid $pre-border-color;
 
   /* Error */
   .err {

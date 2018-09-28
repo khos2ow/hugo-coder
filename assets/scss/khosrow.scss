@@ -1,5 +1,4 @@
 @import "variables";
-@import "highlight";
 
 $link-hover-color: #555555;
 
@@ -8,13 +7,16 @@ $fg-color-code-inline: #27373f !default;
 $bg-color-code-pre: #f8f8f8 !default;
 $fg-color-code-pre: #27373f !default;
 
-$nav-border-color: rgba(34,34,34,.15);
+$pre-border-color: #e1e1e1;
+$nav-border-color: rgba(34, 34, 34, .15);
 
 $content-header-border-color: #ffcd00 !default;
 $content-footer-border-color: #bdbdbd !default;
 
 $font-family__main: BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen-Sans, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 $font-family__code: Menlo,Monaco,Consolas,"Courier New",monospace;
+
+@import "highlight";
 
 body {
 	font-family: $font-family__main;
@@ -40,13 +42,11 @@ p {
 
 .page-content {
   a {
-    font-weight: 400;
-    color: $alt-fg-color;
-    text-decoration: underline;
-    text-underline-position: under;
+    color: $link-color;
     &:focus,
     &:hover {
-      color: $link-hover-color;
+      color: $link-color;
+      text-decoration: underline;
     }
   }
 }
@@ -64,6 +64,7 @@ h6 {
 pre {
   direction: ltr;
   border-radius: 5px;
+  border: 1px solid $pre-border-color;
   color:$fg-color-code-pre;
   background-color: $bg-color-code-pre;
   -moz-tab-size: 4;
@@ -74,7 +75,7 @@ code {
   display: inline;
   background-color: $bg-color-code-inline;
   color: $fg-color-code-inline;
-  border: 1px solid #dcdcdc;
+  border: 1px solid $pre-border-color;
   border-radius: 5px;
   font-size: 90%;
 }
@@ -118,9 +119,16 @@ blockquote {
     text-transform: none;
     text-decoration: none;
   }
+  a {
+    &:hover,
+    &:focus {
+      color: $link-hover-color;
+    }
+  }
 
   .navigation-title {
     font-size: 1.8rem;
+    text-transform: none;
   }
 
   .navigation-list {
@@ -195,6 +203,14 @@ blockquote {
       margin-bottom: 1.5em;
       border-bottom: .125em solid $content-footer-border-color;
     }
+    a {
+      color: $fg-color;
+      font-weight: 500;
+      &:hover,
+      &:focus {
+        color: $link-hover-color;
+      }
+    }
     .separator {
       font-size: 8px;
     }
@@ -211,6 +227,10 @@ blockquote {
       }
       a {
         text-transform: none;
+        &:hover,
+        &:focus {
+          color: $link-hover-color;
+        }
       }
     }
   }
@@ -222,6 +242,13 @@ blockquote {
       li {
         a {
           text-transform: none;
+          &:hover,
+          &:focus {
+            color: $link-hover-color;
+          }
+          i {
+            font-size: 1.6rem;
+          }
         }
       }
     }
@@ -235,12 +262,31 @@ blockquote {
 }
 
 .footer {
+  a {
+    color: $fg-color;
+    &:hover,
+    &:focus {
+      color: $link-hover-color;
+    }
+  }
   .centered {
     .about {
       ul {
         margin-top: 1.4rem;
         margin-bottom: 1.4rem;
+        li {
+          a {
+            i {
+              font-size: 1.6rem;
+            }
+          }
+        }
       }
+    }
+  }
+  .container {
+    a {
+      font-weight: bold;
     }
   }
 }
