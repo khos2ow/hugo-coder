@@ -195,6 +195,7 @@ blockquote {
     }
   }
   .page-footer {
+    margin-top: 0;
     &:before {
       content: "";
       display: block;
@@ -202,6 +203,9 @@ blockquote {
       margin-top: 1.5em;
       margin-bottom: 1.5em;
       border-bottom: .125em solid $content-footer-border-color;
+    }
+    .categories {
+      margin-bottom: 2.0rem;
     }
     a {
       color: $fg-color;
