@@ -1,35 +1,35 @@
 {{ define "title" }}
-  {{ .Title }} · {{ .Site.Title }}
+  {{- .Title }} · {{ .Site.Title -}}
 {{ end }}
 {{ define "content" }}
   <section class="container list">
     <div class="page-header">
       <div class="page-title">
         <h1>
-          {{ if eq .Kind "taxonomy" }}
-            {{ ( ( i18n .Data.Singular 1 ) | default .Data.Singular ) | title }}
-            {{ print ": " }}
-          {{ end }}
-          {{ .Title }}
+          {{- if eq .Kind "taxonomy" -}}
+            {{- ( ( i18n .Data.Singular 1 ) | default .Data.Singular ) | title -}}
+            {{- print ": " -}}
+          {{- end -}}
+          {{- .Title -}}
         </h1>
       </div>
     </div>
     <div class="page-content">
-      {{ $records := where .Data.Pages "Section" "posts" }}
-      {{ if gt (len $records ) 0 }}
+      {{- $records := where .Data.Pages "Section" "posts" -}}
+      {{- if gt (len $records ) 0 }}
         <ul>
-          {{ $paginator := .Paginate ($records) }}
-          {{ range $paginator.Pages }}
+          {{- $paginator := .Paginate ($records) -}}
+          {{- range $paginator.Pages }}
             <li>
               <span>{{ .Date.Format (.Site.Params.dateFormat | default "January 2, 2006" ) }}</span>
               <a href="{{ .URL }}">{{ .Title }}</a>
             </li>
-          {{ end }}
+          {{- end }}
         </ul>
-        {{ partial "pagination.html" . }}
-      {{ else }}
+        {{- partial "pagination.html" . -}}
+      {{- else -}}
         <p>{{ i18n "noPosts" }}</p>
-      {{ end }}
+      {{- end }}
     </div>
   </section>
 {{ end }}

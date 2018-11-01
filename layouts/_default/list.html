@@ -3,7 +3,6 @@
     {{- ( ( i18n .Data.Singular 1 ) | default .Data.Singular ) | title -}}
     {{- print ": " -}}
   {{- end -}}
-
   {{- .Title }} · {{ .Site.Title -}}
 {{ end }}
 {{ define "content" }}

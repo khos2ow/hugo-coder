@@ -1,9 +1,9 @@
 {{ define "title" }}
-  {{ if eq .Kind "taxonomy" }}
-    {{ ( ( i18n .Data.Singular 1 ) | default .Data.Singular ) | title }}
-    {{ print ": " }}
-  {{ end }}
-  {{ .Title }} · {{ .Site.Title }}
+  {{- if eq .Kind "taxonomy" -}}
+    {{- ( ( i18n .Data.Singular 1 ) | default .Data.Singular ) | title -}}
+    {{- print ": " -}}
+  {{- end -}}
+  {{- .Title }} · {{ .Site.Title -}}
 {{ end }}
 {{ define "content" }}
   <section class="container post">
@@ -31,8 +31,15 @@
       </div>
 
       <footer class="page-footer">
-        {{ with .Page.Params.Categories }}{{ partial "taxonomy/categories" . }}{{ end }}
-        {{ with .Page.Params.Tags }}{{ partial "taxonomy/tags" . }}{{ end }}
+        <div class="footer-meta">
+          {{ with .Page.Params.Categories }}
+            {{ partial "taxonomy/categories" . }}
+          {{ end }}
+          
+          {{ with .Page.Params.Tags }}
+            {{ partial "taxonomy/tags" . }}
+          {{ end }}
+        </div>
 
         {{ partial "posts/disqus" . }}
       </footer>
