@@ -1,20 +1,20 @@
 <footer class="footer">
   <section class="container centered">
     <div class="about">
-      {{ with .Site.Params.social }}
+      {{ with .Site.Params.social -}}
       <ul>
-        {{ range $index, $el := sort . }}
+        {{ range $index, $el := sort . -}}
         <li>
-          {{ if gt $index 0 }}
+          {{ if gt $index 0 -}}
             <span class="separator">•</span>
-          {{ end }}
-          <a href="{{ .url }}" title="{{ i18n ( print "footer_social_" .icon ) }}">
+          {{ end -}}
+          <a href="{{ .url }}" title="{{ i18n (print "footer_social_" .icon) }}">
             <i class="fa{{ .type }} fa-{{ .icon }}"></i>
           </a>
         </li>
         {{ end }}
       </ul>
-      {{ end }}
+      {{- end }}
     </div>
   </section>
   <section class="container">
@@ -24,16 +24,16 @@
     {{ if not .Site.Params.hideCopyright }}
     <span class="copyright">
       ©
-      {{ with .Site.Params.copyright.year }}
-        {{ . }}
-      {{ else }}
+      {{ with .Site.Params.copyright.year -}}
+        {{- . -}}
+      {{- else }}
         {{ now.Year }}
-      {{ end }}
+      {{ end -}}
       {{ if not .Site.Params.hideCopyrightOwner }}
         <a href="{{ print "/" | absLangURL }}">{{ .Site.Title | lower }}</a>
-      {{ end }}
+      {{ end -}}
     </span>
-    {{ end }}
+    {{ end -}}
 
     {{ if not .Site.Params.hideCredits }}
     <span class="credits">

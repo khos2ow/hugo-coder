@@ -1,6 +1,6 @@
 {{ define "title" }}
   {{- if eq .Kind "taxonomy" -}}
-    {{- ( ( i18n .Data.Singular 1 ) | default .Data.Singular ) | title -}}
+    {{- ((i18n .Data.Singular 1) | default .Data.Singular) | title -}}
     {{- print ": " -}}
   {{- end -}}
   {{- .Title }} · {{ .Site.Title -}}
@@ -16,7 +16,7 @@
           <span class="posted-on">
             <i class="far fa-calendar"></i>
             <time datetime='{{ .Lastmod.Format "2006-01-02T15:04:05Z07:00" }}'>
-              {{ .Lastmod.Format (.Site.Params.dateFormat | default "January 2, 2006" ) }}
+              {{ .Lastmod.Format (.Site.Params.dateFormat | default "January 2, 2006") }}
             </time>
           </span>
           <span class="reading-time">
@@ -32,13 +32,13 @@
 
       <footer class="page-footer">
         <div class="footer-meta">
-          {{ with .Page.Params.Categories }}
+          {{- with .Page.Params.Categories }}
             {{ partial "taxonomy/categories" . }}
-          {{ end }}
-          
-          {{ with .Page.Params.Tags }}
+          {{- end }}
+
+          {{- with .Page.Params.Tags }}
             {{ partial "taxonomy/tags" . }}
-          {{ end }}
+          {{- end }}
         </div>
 
         {{ partial "posts/disqus" . }}

@@ -1,8 +1,8 @@
-{{ $paginator := .Paginator }}
-{{ $adjacent_links := 2 }}
-{{ $max_links := (add (mul $adjacent_links 2) 1) }}
-{{ $lower_limit := (add $adjacent_links 1) }}
-{{ $upper_limit := (sub $paginator.TotalPages $adjacent_links) }}
+{{- $paginator := .Paginator -}}
+{{- $adjacent_links := 2 -}}
+{{- $max_links := (add (mul $adjacent_links 2) 1) -}}
+{{- $lower_limit := (add $adjacent_links 1) -}}
+{{- $upper_limit := (sub $paginator.TotalPages $adjacent_links) -}}
 {{ if gt $paginator.TotalPages 1 }}
 <ul class="pagination">
   {{ if $paginator.HasPrev }}
@@ -23,7 +23,7 @@
           {{ $.Scratch.Set "page_number_flag" true }}
         {{ end }}
       {{ else }}
-        {{ if and ( ge .PageNumber (sub $paginator.PageNumber $adjacent_links) ) ( le .PageNumber (add $paginator.PageNumber $adjacent_links) ) }}
+        {{ if and (ge .PageNumber (sub $paginator.PageNumber $adjacent_links)) (le .PageNumber (add $paginator.PageNumber $adjacent_links)) }}
           {{ $.Scratch.Set "page_number_flag" true }}
         {{ end }}
       {{ end }}

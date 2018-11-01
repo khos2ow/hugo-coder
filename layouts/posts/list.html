@@ -7,7 +7,7 @@
       <div class="page-title">
         <h1>
           {{- if eq .Kind "taxonomy" -}}
-            {{- ( ( i18n .Data.Singular 1 ) | default .Data.Singular ) | title -}}
+            {{- ((i18n .Data.Singular 1) | default .Data.Singular) | title -}}
             {{- print ": " -}}
           {{- end -}}
           {{- .Title -}}
@@ -16,12 +16,12 @@
     </div>
     <div class="page-content">
       {{- $records := where .Data.Pages "Section" "posts" -}}
-      {{- if gt (len $records ) 0 }}
+      {{- if gt (len $records) 0 }}
         <ul>
           {{- $paginator := .Paginate ($records) -}}
           {{- range $paginator.Pages }}
             <li>
-              <span>{{ .Date.Format (.Site.Params.dateFormat | default "January 2, 2006" ) }}</span>
+              <span>{{ .Date.Format (.Site.Params.dateFormat | default "January 2, 2006") }}</span>
               <a href="{{ .URL }}">{{ .Title }}</a>
             </li>
           {{- end }}

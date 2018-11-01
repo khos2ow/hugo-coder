@@ -18,41 +18,41 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.0/normalize.min.css" integrity="sha256-oSrCnRYXvHG31SBifqP2PM1uje7SJUyX0nTwO2RJV54=" crossorigin="anonymous" />
 
-    {{ if .Site.IsServer }}
-      {{ $cssOpts := (dict "targetPath" "css/coder.css" "enableSourceMap" true ) }}
-      {{ $styles := resources.Get "scss/coder.scss" | resources.ExecuteAsTemplate "style.coder.css" . | toCSS $cssOpts }}
+    {{ if .Site.IsServer -}}
+      {{- $cssOpts := (dict "targetPath" "css/coder.css" "enableSourceMap" true) -}}
+      {{- $styles := resources.Get "scss/coder.scss" | resources.ExecuteAsTemplate "style.coder.css" . | toCSS $cssOpts -}}
       <link rel="stylesheet" href="{{ $styles.RelPermalink }}" media="screen">
-    {{ else }}
-      {{ $cssOpts := (dict "targetPath" "css/coder.css" ) }}
-      {{ $styles := resources.Get "scss/coder.scss" | resources.ExecuteAsTemplate "style.coder.css" . | toCSS $cssOpts | minify | fingerprint }}
+    {{- else -}}
+      {{- $cssOpts := (dict "targetPath" "css/coder.css") -}}
+      {{- $styles := resources.Get "scss/coder.scss" | resources.ExecuteAsTemplate "style.coder.css" . | toCSS $cssOpts | minify | fingerprint -}}
       <link rel="stylesheet" href="{{ $styles.RelPermalink }}" integrity="{{ $styles.Data.Integrity }}" crossorigin="anonymous" media="screen" />
-    {{ end }}
+    {{- end }}
 
-    {{ if .Site.Params.rtl }}
-      {{ if .Site.IsServer }}
-        {{ $cssOpts := (dict "targetPath" "css/coder-rtl.css" "enableSourceMap" true ) }}
-        {{ $styles := resources.Get "scss/coder-rtl.scss" | resources.ExecuteAsTemplate "style.coder-rtl.css" . | toCSS $cssOpts }}
+    {{ if .Site.Params.rtl -}}
+      {{- if .Site.IsServer -}}
+        {{- $cssOpts := (dict "targetPath" "css/coder-rtl.css" "enableSourceMap" true) -}}
+        {{- $styles := resources.Get "scss/coder-rtl.scss" | resources.ExecuteAsTemplate "style.coder-rtl.css" . | toCSS $cssOpts -}}
         <link rel="stylesheet" href="{{ $styles.RelPermalink }}" media="screen">
-      {{ else }}
-        {{ $cssOpts := (dict "targetPath" "css/coder-rtl.css" ) }}
-        {{ $styles := resources.Get "scss/coder-rtl.scss" | resources.ExecuteAsTemplate "style.coder-rtl.css" . | toCSS $cssOpts | minify | fingerprint }}
+      {{- else -}}
+        {{- $cssOpts := (dict "targetPath" "css/coder-rtl.css") -}}
+        {{- $styles := resources.Get "scss/coder-rtl.scss" | resources.ExecuteAsTemplate "style.coder-rtl.css" . | toCSS $cssOpts | minify | fingerprint -}}
         <link rel="stylesheet" href="{{ $styles.RelPermalink }}" integrity="{{ $styles.Data.Integrity }}" crossorigin="anonymous" media="screen" />
-      {{ end }}
-    {{ end }}
+      {{- end -}}
+    {{- end }}
 
-    {{ if .Site.IsServer }}
-      {{ $cssOpts := (dict "targetPath" "css/khosrow.css" "enableSourceMap" true ) }}
-      {{ $styles := resources.Get "scss/khosrow.scss" | resources.ExecuteAsTemplate "style.khosrow.css" . | toCSS $cssOpts }}
+    {{ if .Site.IsServer -}}
+      {{- $cssOpts := (dict "targetPath" "css/khosrow.css" "enableSourceMap" true) -}}
+      {{- $styles := resources.Get "scss/khosrow.scss" | resources.ExecuteAsTemplate "style.khosrow.css" . | toCSS $cssOpts -}}
       <link rel="stylesheet" href="{{ $styles.Permalink }}" media="screen">
-    {{ else }}
-      {{ $cssOpts := (dict "targetPath" "css/khosrow.css" ) }}
-      {{ $styles := resources.Get "scss/khosrow.scss" | resources.ExecuteAsTemplate "style.khosrow.css" . | toCSS $cssOpts | minify | fingerprint }}
+    {{- else -}}
+      {{- $cssOpts := (dict "targetPath" "css/khosrow.css") -}}
+      {{- $styles := resources.Get "scss/khosrow.scss" | resources.ExecuteAsTemplate "style.khosrow.css" . | toCSS $cssOpts | minify | fingerprint -}}
       <link rel="stylesheet" href="{{ $styles.Permalink }}" integrity="{{ $styles.Data.Integrity }}" crossorigin="anonymous" media="screen" />
-    {{ end }}
+    {{- end }}
 
-    {{ range .Site.Params.custom_css }}
+    {{ range .Site.Params.custom_css -}}
       <link rel="stylesheet" href="{{ . | absURL }}{{ with $.Site.Params.version.css }}?v={{ . }}{{ end }}">
-    {{ end }}
+    {{- end }}
 
     <link rel="icon" type="image/png" href="{{ .Site.Params.favicon_32 | default "/images/favicon-32x32.png" | absURL }}" sizes="32x32">
     <link rel="icon" type="image/png" href="{{ .Site.Params.favicon_16 | default "/images/favicon-16x16.png" | absURL }}" sizes="16x16">
@@ -60,7 +60,7 @@
     {{ if .RSSLink }}
       <link href="{{ .RSSLink }}" rel="alternate" type="application/rss+xml" title="{{ .Site.Title }}" />
       <link href="{{ .RSSLink }}" rel="feed" type="application/rss+xml" title="{{ .Site.Title }}" />
-    {{ end }}
+    {{- end }}
 
     {{ template "_internal/twitter_cards.html" . }}
 
