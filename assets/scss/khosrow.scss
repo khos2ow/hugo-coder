@@ -1,5 +1,7 @@
 @import "variables";
 
+$bg-color-white: #fefefe;
+
 $link-hover-color: #555555;
 
 $bg-color-code-inline: #eeeeee !default;
@@ -20,6 +22,7 @@ $font-family__code: Menlo,Monaco,Consolas,"Courier New",monospace;
 
 body {
 	font-family: $font-family__main;
+  background-color: $bg-color-white;
 }
 
 a {
@@ -110,7 +113,7 @@ blockquote {
 
 .navigation {
   position: fixed;
-  background-color: $bg-color;
+  background-color: $bg-color-white;
   z-index: 10;
   &.fixed {
     border-bottom: 1px solid $nav-border-color;
@@ -133,6 +136,7 @@ blockquote {
 
   .navigation-list {
     @media only screen and (max-device-width : 768px) {
+      background-color: $bg-color-white;
       border-top: solid 1px $nav-border-color;
       border-bottom: solid 1px $nav-border-color;
     }
