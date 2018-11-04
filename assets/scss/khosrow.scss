@@ -229,15 +229,45 @@ blockquote {
   ul {
     li {
       span {
-        text-align: left;
+        display: block;
+        float: left;
         margin-left: 0;
         margin-right: 3.0rem;
+        @media only screen and (max-device-width : 768px) {
+          float: none;
+          margin-right: 0;
+          width: inherit;
+        }
+      }
+      > div {
+        display: block;
+        float: left;
+        width: calc(100% - 23.0rem);
+        @media only screen and (max-device-width : 768px) {
+          float: none;
+          width: 100%;
+        }
+        &:after {
+          content: "";
+          display: block;
+          width: 4em;
+          margin-top: 1.5em;
+          margin-bottom: 1.5em;
+          border-bottom: .125em solid $content-footer-border-color;
+        }
       }
       a {
         text-transform: none;
         &:hover,
         &:focus {
           color: $link-hover-color;
+        }
+      }
+      &:last-of-type {
+        > div:after {
+          margin-top: 0;
+          margin-bottom: 0;
+          border-bottom: none;
         }
       }
     }
@@ -261,7 +291,6 @@ blockquote {
       }
     }
   }
-
   .error {
     p {
       text-align: center;
@@ -346,11 +375,21 @@ body.rtl {
     ul {
       li {
         span {
-          text-align: right;
+          float: right;
           margin-left: 3.0rem;
           margin-right: 0;
-          @media only screen and (min-device-width : 320px) and (max-device-width : 480px) {
-            text-align: right;
+          @media only screen and (max-device-width : 768px) {
+            float: none;
+            margin-left: 0;
+            width: inherit;
+          }        
+        }
+        > div {
+          float: right;
+          width: calc(100% - 23.0rem);
+          @media only screen and (max-device-width : 768px) {
+            float: none;
+            width: 100%;
           }
         }
       }
