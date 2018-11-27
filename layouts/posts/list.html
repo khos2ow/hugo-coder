@@ -20,13 +20,7 @@
         <ul>
           {{- $paginator := .Paginate ($records) -}}
           {{- range $paginator.Pages }}
-            <li class="clearfix">
-              <span>{{ .Date.Format (.Site.Params.dateFormat | default "January 2, 2006") }}</span>
-              <div>
-                <a href="{{ .URL }}">{{ .Title }}</a>
-                <p>{{ .Summary }}</p>
-              </div>
-            </li>
+            {{ .Render "li" }}
           {{- end }}
         </ul>
         {{- partial "pagination.html" . -}}
