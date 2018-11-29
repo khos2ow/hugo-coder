@@ -1,7 +1,10 @@
 <li class="clearfix">
   <span>{{ .Date.Format (.Site.Params.dateFormat | default "January 2, 2006") }}</span>
-  <div>
+  <div class="post-summary">
     <a href="{{ .URL }}">{{ .Title }}</a>
-    <p>{{ .Summary }} <a href="{{ .URL }}">Read more...</a></p>
+    <div class="summary-content">
+      {{ .Summary }}
+    </div>
+    <a href="{{ .URL }}" class="summary-more">{{ i18n "readMore" }}</a>
   </div>
 </li>

@@ -239,10 +239,11 @@ blockquote {
           width: inherit;
         }
       }
-      > div {
+      > .post-summary {
         display: block;
         float: left;
         width: calc(100% - 23.0rem);
+        font-size: 1.6rem;
         @media only screen and (max-device-width : 768px) {
           float: none;
           width: 100%;
@@ -255,12 +256,34 @@ blockquote {
           margin-bottom: 1.5em;
           border-bottom: .125em solid $content-footer-border-color;
         }
+        .summary-content {
+          a {
+            font-size: 1.6rem;
+            font-weight: normal;
+            color: $link-color;
+            &:focus,
+            &:hover {
+              color: $link-color;
+              text-decoration: underline;
+            }
+          }
+          details {
+            display: none;
+          }
+          h1, h2, h3, h4, h5, h6, h7 {
+            margin: 1.6rem 0;
+            font-size: 1.8rem;
+          }
+        }
       }
       a {
         text-transform: none;
         &:hover,
         &:focus {
           color: $link-hover-color;
+        }
+        &.summary-more {
+          font-size: 1.6rem;
         }
       }
       &:last-of-type {
@@ -384,7 +407,7 @@ body.rtl {
             width: inherit;
           }        
         }
-        > div {
+        > .post-summary {
           float: right;
           width: calc(100% - 23.0rem);
           @media only screen and (max-device-width : 768px) {
