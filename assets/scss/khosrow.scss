@@ -210,13 +210,13 @@ blockquote {
     }
     .footer-meta {
       margin-bottom: 2.0rem;
-    }
-    a {
-      color: $fg-color;
-      font-weight: 500;
-      &:hover,
-      &:focus {
-        color: $link-hover-color;
+      a {
+        color: $fg-color;
+        font-weight: 500;
+        &:hover,
+        &:focus {
+          color: $link-hover-color;
+        }
       }
     }
     .separator {
