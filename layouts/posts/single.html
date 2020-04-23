@@ -36,11 +36,11 @@
       <footer class="page-footer">
         <div class="footer-meta">
           {{- with .Page.Params.Categories }}
-            {{ partial "taxonomy/categories" . }}
+            {{ partial "taxonomy/categories.html" . }}
           {{- end }}
 
           {{- with .Page.Params.Tags }}
-            {{ partial "taxonomy/tags" . }}
+            {{ partial "taxonomy/tags.html" . }}
           {{- end }}
         </div>
 

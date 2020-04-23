@@ -81,6 +81,7 @@ code {
   border: 1px solid $pre-border-color;
   border-radius: 5px;
   font-size: 90%;
+  padding: .2rem .4rem;
 }
 pre code {
   background-color: $bg-color-code-pre;
@@ -228,7 +229,7 @@ blockquote {
 .list {
   ul {
     li {
-      span {
+      .date {
         display: block;
         float: left;
         margin-left: 0;
@@ -259,7 +260,7 @@ blockquote {
         .summary-content {
           a {
             font-size: 1.6rem;
-            font-weight: normal;
+            font-weight: 300;
             color: $link-color;
             &:focus,
             &:hover {
@@ -276,13 +277,16 @@ blockquote {
           }
         }
       }
-      a {
+      .title {
         text-transform: none;
         &:hover,
         &:focus {
           color: $link-hover-color;
         }
         &.summary-more {
+          font-size: 1.6rem;
+        }
+        &.more {
           font-size: 1.6rem;
         }
       }
@@ -405,7 +409,7 @@ body.rtl {
             float: none;
             margin-left: 0;
             width: inherit;
-          }        
+          }
         }
         > .post-summary {
           float: right;

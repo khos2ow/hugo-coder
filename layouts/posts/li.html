@@ -1,10 +1,10 @@
 <li class="clearfix">
-  <span>{{ .Date.Format (.Site.Params.dateFormat | default "January 2, 2006") }}</span>
+  <span class="date">{{ .Date.Format (.Site.Params.dateFormat | default "January 2, 2006") }}</span>
   <div class="post-summary">
-    <a href="{{ .Params.ExternalLink | default .RelPermalink }}">{{ .Title }}</a>
+    <a class="title" href="{{ .Params.ExternalLink | default .RelPermalink }}">{{ .Title }}</a>
     <div class="summary-content">
       {{ .Summary }}
     </div>
-    <a href="{{ .URL }}" class="summary-more">{{ i18n "readMore" }}</a>
+    <a class="title more" href="{{ .Params.ExternalLink | default .RelPermalink }}" class="summary-more">{{ i18n "readMore" }}</a>
   </div>
 </li>
