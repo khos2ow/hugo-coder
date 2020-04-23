@@ -11,6 +11,7 @@
     </div>
   </div>
   <div class="page-content">
+  {{ .Content }}
     {{- $records := where .Data.Pages "Section" "posts" -}}
     {{- if gt (len $records) 0 }}
       <ul>
@@ -18,7 +19,7 @@
         {{- range $paginator.Pages }}
           <li>
             <span>{{ .Date.Format (.Site.Params.dateFormat | default "January 2, 2006") }}</span>
-            <a href="{{ .URL }}">{{ .Title }}</a>
+            <a href="{{ .Params.ExternalLink | default .RelPermalink }}">{{ .Title }}</a>
           </li>
         {{- end }}
       </ul>
