@@ -1,7 +1,7 @@
 <li class="clearfix">
   <span>{{ .Date.Format (.Site.Params.dateFormat | default "January 2, 2006") }}</span>
   <div class="post-summary">
-    <a href="{{ .URL }}">{{ .Title }}</a>
+    <a href="{{ .Params.ExternalLink | default .RelPermalink }}">{{ .Title }}</a>
     <div class="summary-content">
       {{ .Summary }}
     </div>

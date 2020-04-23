@@ -1,9 +1,11 @@
----
-draft: true
-date: {{ .Date }}
-lastmod: {{ .Date }}
-title: "{{ .File.BaseFileName | humanize | title }}"
-slug: "{{ .File.BaseFileName }}"
-tags:
-categories:
----
++++ 
+draft = true
+date = {{ .Date }}
+title = "{{ .File.BaseFileName | humanize | title }}"
+description = ""
+slug = "{{ .File.BaseFileName }}"
+tags = []
+categories = []
+externalLink = ""
+series = []
++++

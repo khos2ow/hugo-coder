@@ -1,3 +1,4 @@
+{{ if not .Site.Params.hideFooter | default false }}
 <footer class="footer">
   <section class="container centered">
     <div class="about">
@@ -18,7 +19,7 @@
     </div>
   </section>
   <section class="container">
-    {{ with .Site.Params.footercontent }}
+    {{ with .Site.Params.footercontent | safeHTML }}
       <p>{{ . }}</p>
     {{ end }}
     {{ if not .Site.Params.hideCopyright }}
@@ -27,7 +28,11 @@
       {{ with .Site.Params.copyright.year -}}
         {{- . -}}
       {{- else }}
+        {{ if (and (.Site.Params.since) (lt .Site.Params.since now.Year)) }}
+          {{ .Site.Params.since }} -
+        {{ end }}
         {{ now.Year }}
+        {{ with .Site.Params.Author }} {{ . }} {{ end }}
       {{ end -}}
       {{ if not .Site.Params.hideCopyrightOwner }}
         <a href="{{ print "/" | absLangURL }}">{{ .Site.Title | lower }}</a>
@@ -38,12 +43,14 @@
     {{ if not .Site.Params.hideCredits }}
     <span class="credits">
       {{ if not .Site.Params.hideCopyright }}<span class="credits-separator">·</span>{{ end }}
-      Powered with <i class="fas fa-heart"></i> by <a href="https://gohugo.io/">Hugo</a> & <a href="https://github.com/luizdepra/hugo-coder/">Coder</a>.
+      {{ i18n "powered_by" }} <a href="https://gohugo.io/">Hugo</a> & <a href="https://github.com/luizdepra/hugo-coder/">Coder</a>.
     </span>
     {{ end }}
     {{ if .Site.Params.commit }}
-      {{ if or (not .Site.Params.hideCredits) (not .Site.Params.hideCopyright) }} · {{ end }}
-      [<a href="{{ .Site.Params.commit }}{{ getenv "GIT_COMMIT_SHA" }}">{{ getenv "GIT_COMMIT_SHA_SHORT" }}</a>]
+      {{ if .GitInfo }}
+        [<a href="{{ .Site.Params.commit }}/{{ .GitInfo.Hash }}">{{ .GitInfo.AbbreviatedHash }}</a>]
+      {{ end }}
     {{ end }}
   </section>
 </footer>
+{{ end }}
